@@ -1,0 +1,55 @@
+{% extends 'dcrud/base.html' %}
+{% block content %}
+
+
+<div class="container">
+    <div class="row">
+    <div class="col-4">
+        <h4 class="text-center alert alert-warning"> Add New Data </h4>
+        <form action="" method="POST">
+          {% csrf_token %}
+           {{ form.as_p }}
+            <input type="submit" class="btn btn-primary" value="Submit">
+        </form>
+    </div>
+    <div class="col-7 offset-1">
+        {% if data %}
+        <h4 class="text-center alert alert-info"> Show Data </h4>
+        {% else %}
+        <h3 class="text-center alert alert-warning">No Record Found</h3>
+        {% endif %}
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Pass</th>
+                <th class="text-center">Action</th>
+            </tr>
+
+            </thead>
+            <tbody>
+            {% for d in data %}
+            <tr>
+                <th scope="col">{{d.id}}</th>
+                <td scope="col">{{d.name}}</td>
+                <td scope="col">{{d.email}}</td>
+                <td scope="col">{{d.password}}</td>
+                <td scope="col">
+                    <a href="{% url 'updated' d.id %}" class="btn btn-warning btn-sm fw-bold" type="submit" style="padding:7px;">Edit</a>
+                    <form action="{% url 'deleted' d.id %}" method="post" class="d-inline">
+                        {% csrf_token %}
+                        <input type="submit" class="btn btn-danger" value="Delete">
+                    </form>
+                </td>
+            </tr>
+
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+   </div>
+</div>
+
+{% endblock content %}

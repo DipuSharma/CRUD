@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Django Crud Operation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width-initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'dcrud/css/bootstrap.css'%}">
+
+</head>
+<body>
+<div class="container mt-5">
+  <h2 class="text-center alert alert-success"> Function Based Crud </h2>
+  {% block content %}
+
+  {% endblock content %}
+</div>
+
+<script src="{% static 'dcrud/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'dcrud/js/jquery.js' %}"></script>
+<script src="{% static 'dcrud/js/popper.min.js' %}"></script>
+</body>
+</html>
